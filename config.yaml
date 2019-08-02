@@ -1,0 +1,21 @@
+
+
+# Twitch connection values
+host: "irc.twitch.tv"
+port: 6667
+
+# Logging to file and directory values, logging level
+log_default_level: DEBUG  # default level must be less or equal to the different handlers
+
+# Logging to file "streammonitor" in the directory noted below
+log_file_enabled: true
+log_file_directory: logs/
+log_file_level: DEBUG
+
+# Logging to console (stdout)
+log_console_enabled: true
+log_console_level: DEBUG
+
+
+# Command config parameters
+command_characters: !!python/tuple ["!", ".", "/"]
