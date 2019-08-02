@@ -3,4 +3,4 @@
 *.log
 logs/
 
-private_config.py
+private_config.*
