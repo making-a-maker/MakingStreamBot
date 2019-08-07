@@ -17,6 +17,8 @@ import command_processor.commander as commander
 from streammonitor.ThreadCommonObject import ThreadCommonObject
 from utils.log_format import ColorFormatter
 
+VERSION = "0.0.1"
+
 program_name = "streammonitor"
 
 DEFAULT_CONFIG = "config.yaml"
