@@ -2,5 +2,5 @@
 *__pycache__*
 *.log
 logs/
-
-private_config.*
+test/
+private_config.yaml

@@ -41,12 +41,12 @@ config = {}
 if os.path.exists(DEFAULT_CONFIG):
     with open("config.yaml") as pc:
         print("Reading in config.yaml file")
-        config.update(yaml.load(pc.read()))
+        config.update(yaml.unsafe_load(pc.read()))
 # If private config file exists, update with those values (private overrides public)
 if os.path.exists(config_file):
     with open(config_file) as pc:
         print("Reading in {} file".format(config_file))
-        config.update(yaml.load(pc.read()))
+        config.update(yaml.unsafe_load(pc.read()))
 else:
     print("WARNING: Config file \"{}\" does not exist.".format(config_file))
 
