@@ -2,14 +2,18 @@
 import logging
 import threading
 # import traceback
-
-import board
-import neopixel
-
 from utils.led_colors import solid
+from command_processor import command_processor as cp
 
 logger = logging.getLogger()
+leds_enabled = True
 
+try:
+    import board
+    import neopixel
+except ImportError as e:
+    logger.critical("board or neopixel modules not installed - disabling LED string")
+    leds_enabled = False
 
 
 class CommandProcessor(threading.Thread):
@@ -28,11 +32,11 @@ class CommandProcessor(threading.Thread):
             self.command_ready_flag = self.tco.command_ready_flag
 
         self.command = ()
-        self.cmd = ""
         self.ready = ready
 
-        self.pixels = neopixel.NeoPixel(board.D18, self.config["num_leds"],
-                                        brightness=self.config["led_brightness"], auto_write=False)
+        if leds_enabled:
+            self.pixels = neopixel.NeoPixel(board.D18, self.config["num_leds"],
+                                            brightness=self.config["led_brightness"], auto_write=False)
 
     def run(self):
 
@@ -53,9 +57,12 @@ class CommandProcessor(threading.Thread):
 
             logger.info("Processing command...")
 
-            self.cmd = self.command[1].strip("!")
-            if self.cmd in solid.keys():
-                self.solid_color(solid[self.cmd])
+            # Strip off first character of command
+            cmd = self.command[1][1:]
+
+            if leds_enabled:
+                if cmd in solid.keys():
+                    cp.led_process(self.pixels, cmd)
 
             with self.tco_lock:
                 self.tco.command_ready_flag.clear()
@@ -65,10 +72,5 @@ class CommandProcessor(threading.Thread):
 # del user
 # colors?
 # listen for sub / raid / follow
-    def display(self, pattern):
-        pass
 
-    def solid_color(self, color: tuple):
-        self.pixels.fill(color)
-        self.pixels.show()
 

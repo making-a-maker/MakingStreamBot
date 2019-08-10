@@ -3,13 +3,11 @@
 #
 from datetime import datetime
 import logging
-import signal
 import socket
-import sys
 import traceback
 import threading
 
-from utils.common import read_message
+from chat_listener.parser import read_message
 from utils.log_colors import colors as c
 
 logger = logging.getLogger()
@@ -71,7 +69,6 @@ class ChatListener(threading.Thread):
                     logger.info("{}Pinged by twitch, ponging.. {}".format(c['c'], c['x']))
 
                 else:
-                    logger.debug("RAW:\n{}".format(response))
                     msg = read_message(response)
 
                     # ToDo: Need to account for a RECONNECT command from IRC - needs to close and reconnect the socket.
