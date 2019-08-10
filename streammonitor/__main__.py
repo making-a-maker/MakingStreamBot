@@ -126,10 +126,9 @@ with tco_lock:
 def signal_handler(signum, frame):
     """
     """
-    global tco
     logger.debug("SIGNAL: {}\nFRAME: {}".format(signum, frame))
     logger.critical("USER COMMANDED SHUT DOWN")
-    with tco.lock:
+    with tco_lock:
         tco.shutdown = True
 
 
