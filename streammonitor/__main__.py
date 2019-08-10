@@ -123,16 +123,16 @@ with tco_lock:
     tco.config = config
 
 
-def signal_handler(signum, frame):
-    """
-    """
-    logger.debug("SIGNAL: {}\nFRAME: {}".format(signum, frame))
-    logger.critical("USER COMMANDED SHUT DOWN")
-    with tco_lock:
-        tco.shutdown = True
-
-
-signal.signal(signal.SIGINT, signal_handler)
+# def signal_handler(signum, frame):
+#     """
+#     """
+#     logger.debug("SIGNAL: {}\nFRAME: {}".format(signum, frame))
+#     logger.critical("USER COMMANDED SHUT DOWN")
+#     with tco_lock:
+#         tco.shutdown = True
+#
+#
+# signal.signal(signal.SIGINT, signal_handler)
 
 
 # set up threads
