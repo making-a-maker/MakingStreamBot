@@ -10,7 +10,7 @@ import traceback
 import threading
 
 from utils.common import read_message
-from utils.colors import colors as c
+from utils.log_colors import colors as c
 
 logger = logging.getLogger()
 

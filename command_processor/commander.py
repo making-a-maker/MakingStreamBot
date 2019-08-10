@@ -3,7 +3,13 @@ import logging
 import threading
 # import traceback
 
+import board
+import neopixel
+
+from utils.led_colors import solid
+
 logger = logging.getLogger()
+
 
 
 class CommandProcessor(threading.Thread):
@@ -24,6 +30,9 @@ class CommandProcessor(threading.Thread):
         self.command = ""
         self.ready = ready
 
+        self.pixels = neopixel.NeoPixel(board.D18, self.config["num_leds"],
+                                        brightness=self.config["led_brightness"], auto_write=False)
+
     def run(self):
 
         # Barrier event to trigger when threads are ready to go
@@ -43,6 +52,9 @@ class CommandProcessor(threading.Thread):
 
             logger.info("Processing command...")
 
+            if self.command.strip["!"] in solid.keys():
+                self.solid_color(self.command)
+
             with self.tco_lock:
                 self.tco.command_ready_flag.clear()
 
@@ -51,4 +63,10 @@ class CommandProcessor(threading.Thread):
 # del user
 # colors?
 # listen for sub / raid / follow
+    def display(self, pattern):
+        pass
+
+    def solid_color(self, color: tuple):
+        self.pixels.fill(color)
+        self.pixels.show()
 
