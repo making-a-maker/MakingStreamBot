@@ -6,6 +6,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 from logging import StreamHandler
 import os
+import signal
 import sys
 import threading
 import time
@@ -23,6 +24,7 @@ program_name = "streammonitor"
 
 DEFAULT_CONFIG = "config.yaml"
 PRIVATE_CONFIG = "private_config.yaml"
+
 
 ##############################
 # Command Line Arguments
@@ -121,6 +123,19 @@ with tco_lock:
     tco.config = config
 
 
+def signal_handler(signum, frame):
+    """
+    """
+    global tco
+    logger.debug("SIGNAL: {}\nFRAME: {}".format(signum, frame))
+    logger.critical("USER COMMANDED SHUT DOWN")
+    with tco.lock:
+        tco.shutdown = True
+
+
+signal.signal(signal.SIGINT, signal_handler)
+
+
 # set up threads
 #   chat listener (connect to channel, listen to chat, if keyword is found, store in TCO, and set event)
 #   command processor (wait for event from chat_listener thread, or shutdown event from main, and execute commands)
@@ -142,3 +157,4 @@ logger.info("Thread Report Ready")
 # wait for threads to join
 chat_thread.join()
 command_thread.join()
+

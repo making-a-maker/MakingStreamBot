@@ -43,7 +43,7 @@ class ChatListener(threading.Thread):
 
     def run(self):
         logger.info("Chat Listener started running")
-        signal.signal(signal.SIGINT, self.signal_handler)
+
 
         logger.info("Listener is opening socket and joining room...")
         self.socket = self.open_socket()
@@ -130,9 +130,3 @@ class ChatListener(threading.Thread):
                     loading = False
         self.chat(str(datetime.utcnow()) + " - Successfully joined chat")
 
-    def signal_handler(self, signum, frame):
-        """
-        """
-        logger.debug("SIGNAL: {}\nFRAME: {}".format(signum, frame))
-        logger.critical("USER COMMANDED SHUT DOWN")
-        self.shutdown = True
