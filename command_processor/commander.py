@@ -27,7 +27,8 @@ class CommandProcessor(threading.Thread):
             self.shutdown = self.tco.shutdown
             self.command_ready_flag = self.tco.command_ready_flag
 
-        self.command = ""
+        self.command = ()
+        self.cmd = ""
         self.ready = ready
 
         self.pixels = neopixel.NeoPixel(board.D18, self.config["num_leds"],
@@ -52,9 +53,9 @@ class CommandProcessor(threading.Thread):
 
             logger.info("Processing command...")
 
-            self.command = self.command.strip("!")
-            if self.command in solid.keys():
-                self.solid_color(solid[self.command])
+            self.cmd = self.command[1].strip("!")
+            if self.cmd in solid.keys():
+                self.solid_color(solid[self.cmd])
 
             with self.tco_lock:
                 self.tco.command_ready_flag.clear()
