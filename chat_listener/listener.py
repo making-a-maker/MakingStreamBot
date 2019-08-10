@@ -71,7 +71,7 @@ class ChatListener(threading.Thread):
                     logger.info("{}Pinged by twitch, ponging.. {}".format(c['c'], c['x']))
 
                 else:
-                    logger.debug("RAW:\n".format(response))
+                    logger.debug("RAW:\n{}".format(response))
                     msg = read_message(response)
 
                     # ToDo: Need to account for a RECONNECT command from IRC - needs to close and reconnect the socket.
