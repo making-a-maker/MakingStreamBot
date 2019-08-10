@@ -62,12 +62,14 @@ class ChatListener(threading.Thread):
         try:
             while not self.shutdown.is_set():
                 response = self.socket.recv(1024).decode()
+                logger.debug("RAW:\n".format(response))
 
                 if response == "PING :tmi.twitch.tv\r\n":
                     self.socket.send("PONG :tmi.twitch.tv\r\n".encode('utf-8'))
                     logger.info("{}Pinged by twitch, ponging.. {}".format(c['c'], c['x']))
 
                 else:
+                    logger.debug("RAW:\n".format(response))
                     msg = read_message(response)
 
                     # ToDo: Need to account for a RECONNECT command from IRC - needs to close and reconnect the socket.
