@@ -52,8 +52,9 @@ class CommandProcessor(threading.Thread):
 
             logger.info("Processing command...")
 
-            if self.command.strip["!"] in solid.keys():
-                self.solid_color(self.command)
+            self.command = self.command.strip("!")
+            if self.command in solid.keys():
+                self.solid_color(solid[self.command])
 
             with self.tco_lock:
                 self.tco.command_ready_flag.clear()
