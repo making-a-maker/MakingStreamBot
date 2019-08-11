@@ -36,7 +36,8 @@ class CommandProcessor(threading.Thread):
 
         if leds_enabled:
             self.pixels = neopixel.NeoPixel(board.D18, self.config["num_leds"],
-                                            brightness=self.config["led_brightness"], auto_write=False)
+                                            brightness=self.config["led_brightness"], auto_write=False,
+                                            pixel_order=neopixel.RGB)
 
     def run(self):
 
