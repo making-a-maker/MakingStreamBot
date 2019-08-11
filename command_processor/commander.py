@@ -1,6 +1,7 @@
 
 import logging
 import threading
+import time
 # import traceback
 from utils.led_colors import solid
 from command_processor import command_processor as cp
@@ -36,8 +37,7 @@ class CommandProcessor(threading.Thread):
 
         if leds_enabled:
             self.pixels = neopixel.NeoPixel(board.D18, self.config["num_leds"],
-                                            brightness=self.config["led_brightness"], auto_write=False,
-                                            pixel_order=neopixel.RGB)
+                                            brightness=self.config["led_brightness"], auto_write=False)
 
     def run(self):
 
@@ -65,8 +65,7 @@ class CommandProcessor(threading.Thread):
                     cp.led_process(self.pixels, cmd)
                 elif cmd in ["pride", "rainbow"]:
                     for i in range(self.config["num_leds"]):
-                        self.pixels[i] = wheel(i)
-                        self.pixels.show()
+                        self.rainbow_cycle(0.001)
 
             with self.tco_lock:
                 self.tco.command_ready_flag.clear()
@@ -77,25 +76,32 @@ class CommandProcessor(threading.Thread):
 # colors?
 # listen for sub / raid / follow
 
+    @staticmethod
+    def wheel(pos):
+        # Input a value 0 to 255 to get a color value.
+        # The colours are a transition r - g - b - back to r.
+        if pos < 0 or pos > 255:
+            r = g = b = 0
+        elif pos < 85:
+            r = int(pos * 3)
+            g = int(255 - pos*3)
+            b = 0
+        elif pos < 170:
+            pos -= 85
+            r = int(255 - pos*3)
+            g = 0
+            b = int(pos*3)
+        else:
+            pos -= 170
+            r = 0
+            g = int(pos*3)
+            b = int(255 - pos*3)
+        return r, g, b  # if ORDER == neopixel.RGB or ORDER == neopixel.GRB else (r, g, b, 0)
 
-def wheel(pos):
-    # Input a value 0 to 255 to get a color value.
-    # The colours are a transition r - g - b - back to r.
-    if pos < 0 or pos > 255:
-        r = g = b = 0
-    elif pos < 85:
-        r = int(pos * 3)
-        g = int(255 - pos*3)
-        b = 0
-    elif pos < 170:
-        pos -= 85
-        r = int(255 - pos*3)
-        g = 0
-        b = int(pos*3)
-    else:
-        pos -= 170
-        r = 0
-        g = int(pos*3)
-        b = int(255 - pos*3)
-    return r, g, b  # if ORDER == neopixel.RGB or ORDER == neopixel.GRB else (r, g, b, 0)
-
+    def rainbow_cycle(self, wait):
+        for j in range(255):
+            for i in range(self.config["num_pixels"]):
+                pixel_index = (i * 256 // self.config["num_pixels"]) + j
+                self.pixels[i] = self.wheel(pixel_index & 255)
+            self.pixels.show()
+            time.sleep(wait)
