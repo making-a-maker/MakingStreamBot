@@ -64,7 +64,7 @@ class CommandProcessor(threading.Thread):
                 if cmd in solid.keys():
                     cp.led_process(self.pixels, cmd)
                 if cmd in ["pride", "rainbow"]:
-                    for i in range(len(self.config["num_leds"])):
+                    for i in range(self.config["num_leds"]):
                         self.pixels[i] = wheel(i)
                         self.pixels.show()
 
