@@ -21,6 +21,6 @@ log_console_level: DEBUG
 command_characters: !!python/tuple ["!", ".", "/"]
 
 # LED strip parameters
-led_brightness: 0.2
+led_brightness: 0.5
 num_leds: 30
 
