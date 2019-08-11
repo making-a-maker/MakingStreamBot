@@ -42,7 +42,6 @@ class ChatListener(threading.Thread):
     def run(self):
         logger.info("Chat Listener started running")
 
-
         logger.info("Listener is opening socket and joining room...")
         self.socket = self.open_socket()
         self.join_room(self.socket)
@@ -54,8 +53,8 @@ class ChatListener(threading.Thread):
         with self.tco_lock:
             self.tco.chat_listener_thread_status = True
 
-        timer_chat_stop = threading.Event()
-        self.timer_chat(timer_chat_stop)
+        # timer_chat_stop = threading.Event()
+        # self.timer_chat(timer_chat_stop)
 
         while not self.shutdown.is_set():
             if self.socket is None:

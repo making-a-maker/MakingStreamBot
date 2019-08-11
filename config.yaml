@@ -22,5 +22,5 @@ command_characters: !!python/tuple ["!", ".", "/"]
 
 # LED strip parameters
 led_brightness: 0.2
-num_leds: 8
+num_leds: 30
 
