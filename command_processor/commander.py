@@ -103,8 +103,8 @@ class CommandProcessor(threading.Thread):
 
     def rainbow_cycle(self, wait):
         for j in range(255):
-            for i in range(self.config["num_pixels"]):
-                pixel_index = (i * 256 // self.config["num_pixels"]) + j
+            for i in range(self.config["num_leds"]):
+                pixel_index = (i * 256 // self.config["num_leds"]) + j
                 self.pixels[i] = self.wheel(pixel_index & 255)
             self.pixels.show()
             time.sleep(wait)
