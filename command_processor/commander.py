@@ -9,9 +9,12 @@ from command_processor import command_processor as cp
 logger = logging.getLogger()
 leds_enabled = True
 
+ORDER = None
+
 try:
     import board
     import neopixel
+    ORDER = neopixel.GRB
 except ImportError as e:
     logger.critical("board or neopixel modules not installed - disabling LED string")
     leds_enabled = False
