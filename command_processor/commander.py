@@ -56,10 +56,9 @@ class CommandProcessor(threading.Thread):
 
             logger.info("COMMAND = {}".format(self.command))
 
-            logger.info("Processing command...")
-
             # Strip off first character of command
             cmd = self.command[1][1:]
+            logger.info("Processing command: '{}'")
 
             if leds_enabled:
                 if cmd in solid.keys():
