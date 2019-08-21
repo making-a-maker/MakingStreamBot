@@ -16,7 +16,8 @@ try:
     import neopixel
     ORDER = neopixel.GRB
 except ImportError as e:
-    logger.critical("board or neopixel modules not installed - disabling LED string")
+    from mock import board, neopixel
+    logger.critical("board or neopixel modules not installed - using mock libraries instead")
     leds_enabled = False
 
 
@@ -38,9 +39,8 @@ class CommandProcessor(threading.Thread):
         self.command = ()
         self.ready = ready
 
-        if leds_enabled:
-            self.pixels = neopixel.NeoPixel(board.D18, self.config["num_leds"],
-                                            brightness=self.config["led_brightness"], auto_write=False)
+        self.pixels = neopixel.NeoPixel(board.D18, self.config["num_leds"],
+                                        brightness=self.config["led_brightness"], auto_write=False)
 
     def run(self):
 
@@ -52,6 +52,8 @@ class CommandProcessor(threading.Thread):
             self.tco.command_thread_status = True
 
         while not self.shutdown.is_set():
+
+            # Wait for the command flag to be set (in listener)
             self.command_ready_flag.wait()
             logger.warning("COMMAND EVENT RECEIVED - Processing...")
             with self.tco_lock:
@@ -63,21 +65,14 @@ class CommandProcessor(threading.Thread):
             cmd = self.command[1][1:]
             logger.info("Processing command: '{}'")
 
-            if leds_enabled:
-                if cmd in solid.keys():
-                    cp.led_process(self.pixels, cmd)
-                elif cmd in ["pride", "rainbow"]:
-                    for i in range(self.config["num_leds"]):
-                        self.rainbow_cycle(0.001)
+            if cmd in solid.keys():
+                cp.led_process(self.pixels, cmd)
+            elif cmd in ["pride", "rainbow"]:
+                for i in range(3):
+                    self.rainbow_cycle(0.001)
 
             with self.tco_lock:
                 self.tco.command_ready_flag.clear()
-
-# Proposed commands
-# add user
-# del user
-# colors?
-# listen for sub / raid / follow
 
     @staticmethod
     def wheel(pos):

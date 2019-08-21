@@ -16,10 +16,6 @@ log_file_level: DEBUG
 log_console_enabled: true
 log_console_level: DEBUG
 
-
-# Command config parameters
-command_characters: !!python/tuple ["!", ".", "/"]
-
 # LED strip parameters
 led_brightness: 0.5
 num_leds: 30
