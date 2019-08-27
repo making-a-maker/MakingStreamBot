@@ -39,8 +39,15 @@ class CommandProcessor(threading.Thread):
         self.command = ()
         self.ready = ready
 
-        self.pixels = neopixel.NeoPixel(board.D18, self.config["num_leds"],
-                                        brightness=self.config["led_brightness"], auto_write=False)
+        if leds_enabled:
+            self.pixels = neopixel.NeoPixel(board.D18, self.config["num_leds"],
+                                            brightness=self.config["led_brightness"], auto_write=False)
+        else:
+            with self.tco_lock:
+                queue = self.tco.gui_queue
+
+            self.pixels = neopixel.NeoPixel(queue, self.config["num_leds"],
+                                            brightness=self.config["led_brightness"], auto_write=False)
 
     def run(self):
 
@@ -63,10 +70,11 @@ class CommandProcessor(threading.Thread):
 
             # Strip off first character of command
             cmd = self.command[1][1:]
-            logger.info("Processing command: '{}'")
+            logger.info("Processing command: '{}'".format(cmd))
 
             if cmd in solid.keys():
-                cp.led_process(self.pixels, cmd)
+                self.pixels.fill(solid[cmd])
+                self.pixels.show()
             elif cmd in ["pride", "rainbow"]:
                 for i in range(3):
                     self.rainbow_cycle(0.001)

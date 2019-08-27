@@ -20,3 +20,9 @@ log_console_level: DEBUG
 led_brightness: 0.5
 num_leds: 30
 
+# LED Simulation
+led_sim:
+  gui_update: 50
+  width: 30
+  height: 30
+

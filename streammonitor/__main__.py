@@ -6,16 +6,29 @@ import logging
 from logging.handlers import RotatingFileHandler
 from logging import StreamHandler
 import os
+from queue import Queue
+import random
 import signal
 import sys
+from tkinter import *
 import threading
 import time
 import traceback
 import yaml
 
+try:
+    import board
+    import neopixel
+    ORDER = neopixel.GRB
+    leds_enabled = True
+except ImportError as e:
+    from mock import board, neopixel
+    leds_enabled = False
+
 import chat_listener.listener as listener
 import command_processor.commander as commander
 from streammonitor.ThreadCommonObject import ThreadCommonObject
+from mock.led_sim import GUIHandler
 from utils.log_format import ColorFormatter
 
 VERSION = "0.0.1"
@@ -122,6 +135,16 @@ with tco_lock:
     tco.logger = logger
     tco.config = config
 
+with tco_lock:
+    tco.gui_queue = Queue()
+    tco.command_queue = Queue()
+
+# Mock LED attempt
+if not leds_enabled:
+    # If LEDs are not enabled, start the GUI
+    gui = GUIHandler(tco, tco_lock)
+else:
+    gui = None
 
 # def signal_handler(signum, frame):
 #     """
@@ -151,7 +174,10 @@ logger.info("Thread are initialized... Starting threads")
 chat_thread.start()
 command_thread.start()
 ready.wait()
-logger.info("Thread Report Ready")
+logger.info("All Threads Report Ready")
+
+if not leds_enabled:
+    gui.master.mainloop()
 
 # wait for threads to join
 chat_thread.join()
