@@ -11,8 +11,6 @@ class NeoPixel:
         self.brightness = brightness
         # ToDo: handle brightness
 
-        # self.show()
-
     def __setitem__(self, key, value: tuple):
         # logger.error("input {}: {}".format(key, value))
         self.pixels[key] = value

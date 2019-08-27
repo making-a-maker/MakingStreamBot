@@ -35,27 +35,22 @@ class GUIHandler:
                                              fill="black")
             )
 
-        # for i in range(len(self.pixels)):
-        #     self.canvas.itemconfig(self.pixels[i], fill="red")
         self.canvas.update_idletasks()
-        # self.canvas.update()
 
         self.update_gui()
 
         # self.gui.after(config["led_sim"]["gui_update"], self.update_gui)
 
     def update_gui(self):
-        # logger.warning("Updating da gui....")
         try:
             leds = self.queue.get()
             for i in range(len(leds)):
                 self.canvas.itemconfig(self.pixels[i], fill=self.tk_rgb(leds[i]))
-            # self.canvas.update_idletasks()
-            # self.gui.update()
             self.canvas.after(self.leds["refresh"], self.update_gui)
 
         except queue.Empty:
             pass
+
         finally:
             self.canvas.after(self.leds["refresh"], self.update_gui)
 
