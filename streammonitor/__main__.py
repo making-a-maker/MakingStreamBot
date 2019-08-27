@@ -164,6 +164,8 @@ else:
 #   command line interface? Do I need this? might be nice to trigger events from CL, without having to involve
 #     twitch chat)
 #
+#
+
 ready = threading.Barrier(3, timeout=10)
 # ready = ""
 chat_thread = listener.ChatListener(tco, tco_lock, ready)
