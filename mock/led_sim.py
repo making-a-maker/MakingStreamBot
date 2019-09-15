@@ -23,6 +23,7 @@ class GUIHandler:
             "refresh": self.config["led_sim"]["gui_update"]
         }
 
+        logger.debug("Creating canvas")
         self.canvas = Canvas(self.master, width=self.leds["string_width"],
                              height=self.leds["height"], bg="black")
         self.canvas.pack()
@@ -39,14 +40,11 @@ class GUIHandler:
 
         self.update_gui()
 
-        # self.gui.after(config["led_sim"]["gui_update"], self.update_gui)
-
     def update_gui(self):
         try:
-            leds = self.queue.get()
+            leds = self.queue.get(block=False)
             for i in range(len(leds)):
                 self.canvas.itemconfig(self.pixels[i], fill=self.tk_rgb(leds[i]))
-            self.canvas.after(self.leds["refresh"], self.update_gui)
 
         except queue.Empty:
             pass

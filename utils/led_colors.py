@@ -2,6 +2,7 @@
 # Solid colors
 solid = {
     "red": (255, 0, 0),
+    "pink": (255, 128, 128),
     "orange": (255, 128, 0),
     "yellow": (255, 255, 0),
     "light_green": (128, 255, 0),

@@ -22,7 +22,7 @@ num_leds: 30
 
 # LED Simulation
 led_sim:
-  gui_update: 500
+  gui_update: 1
   width: 30
   height: 30
 

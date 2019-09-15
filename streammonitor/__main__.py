@@ -134,16 +134,20 @@ tco_lock = threading.Lock()
 with tco_lock:
     tco.logger = logger
     tco.config = config
+logger.debug("TCO created")
 
 with tco_lock:
     tco.gui_queue = Queue()
     tco.command_queue = Queue()
+logger.debug("Command Queues created")
 
 # Mock LED attempt
 if not leds_enabled:
     # If LEDs are not enabled, start the GUI
+    logger.debug("LEDs not enabled - starting mock handler")
     gui = GUIHandler(tco, tco_lock)
 else:
+    logger.debug("LEDs are enabled")
     gui = None
 
 # def signal_handler(signum, frame):
@@ -168,6 +172,7 @@ else:
 
 ready = threading.Barrier(3, timeout=10)
 # ready = ""
+logger.debug("Creating threads")
 chat_thread = listener.ChatListener(tco, tco_lock, ready)
 command_thread = commander.CommandProcessor(tco, tco_lock, ready)
 logger.info("Thread are initialized... Starting threads")
