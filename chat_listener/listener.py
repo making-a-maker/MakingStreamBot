@@ -26,7 +26,7 @@ class ChatListener(threading.Thread):
         logger.info("Initializing Chat Listener")
 
         super().__init__()
-        self.name = "Listener"
+        self.name = "Chat Listener"
 
         self.tco = tco
         self.tco_lock = tco_lock
@@ -42,12 +42,12 @@ class ChatListener(threading.Thread):
     def run(self):
         logger.info("Chat Listener started running")
 
-        logger.info("Listener is opening socket and joining room...")
+        logger.info("Chat Listener is opening socket and joining room...")
         self.socket = self.open_socket()
         self.join_room(self.socket)
 
         # Barrier event to trigger when threads are ready to go
-        logger.warning("**** LISTENER thread waiting on ready")
+        logger.warning("**** CHAT LISTENER thread waiting on ready")
         self.ready.wait()
 
         with self.tco_lock:

@@ -1,6 +1,12 @@
+.vscode*
+*.code-workspace
 .idea/
+
+
 *__pycache__*
 *.log
+
 logs/
 test/
+
 private_config.yaml

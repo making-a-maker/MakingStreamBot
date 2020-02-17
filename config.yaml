@@ -1,5 +1,10 @@
 
 
+thread_enable:
+  chat_thread: false
+  terminal_thread: true
+  command_thread: false
+
 # Twitch connection values
 host: "irc.twitch.tv"
 port: 6667
