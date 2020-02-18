@@ -3,13 +3,11 @@
 #
 from datetime import datetime
 import logging
-import signal
 import socket
-import sys
 import traceback
 import threading
 
-from utils.common import read_message
+from chat_listener.parser import read_message
 from utils.log_colors import colors as c
 
 logger = logging.getLogger()
@@ -43,7 +41,6 @@ class ChatListener(threading.Thread):
 
     def run(self):
         logger.info("Chat Listener started running")
-        # signal.signal(signal.SIGINT, signal_handler)
 
         logger.info("Listener is opening socket and joining room...")
         self.socket = self.open_socket()
@@ -56,11 +53,14 @@ class ChatListener(threading.Thread):
         with self.tco_lock:
             self.tco.chat_listener_thread_status = True
 
-        timer_chat_stop = threading.Event()
-        self.timer_chat(timer_chat_stop)
+        # timer_chat_stop = threading.Event()
+        # self.timer_chat(timer_chat_stop)
 
-        try:
-            while not self.shutdown.is_set():
+        while not self.shutdown.is_set():
+            if self.socket is None:
+                self.socket = self.open_socket()
+                self.join_room(self.socket)
+            try:
                 response = self.socket.recv(1024).decode()
 
                 if response == "PING :tmi.twitch.tv\r\n":
@@ -78,12 +78,11 @@ class ChatListener(threading.Thread):
                             self.tco.command = msg.user, msg.message
                             self.tco.command_ready_flag.set()
 
-        except Exception as e:
-            self.socket.close()
-            logger.critical("{} Lost connection to Twitch IRC {}".format(c['r'], c['x']))
-            logger.error(type(e).__name__, e.args, traceback.format_exc())
-
-            exit(1)
+            except Exception as e:
+                self.socket.close()
+                logger.critical("{} Lost connection to Twitch IRC {}".format(c['r'], c['x']))
+                logger.error(type(e).__name__, e.args, traceback.format_exc())
+                self.socket = None
 
         return 0
 
@@ -127,28 +126,3 @@ class ChatListener(threading.Thread):
                     loading = False
         self.chat(str(datetime.utcnow()) + " - Successfully joined chat")
 
-
-'''
-def signal_handler(signum, frame):
-    """
-    Displays a menu when the user inputs ctrl+c
-    """
-    print("Flagged: {}\nFrame: {}".format(signum, frame))
-    print("\nPaused:\n\t1 = Message\n\t2 = Timeout User\n\tq = Quit")
-    cmd = input("\nCommand: ")
-    if cmd == 'q':
-        chat(s, "Disconnected")
-        # ToDo: fix reference to channel
-        s.send("PART {}\r\n".format("#making_a_maker").encode("utf-8"))
-        print("Exitting MrLoLBot..")
-        sys.exit(0)
-    elif cmd == '1':
-        message = input("Message to send: ")
-        chat(s, message)
-        print("Message Sent")
-    elif cmd == '2':
-        username = input("User to timeout: ")
-        timeout(s, username)
-        print("Timing out: {}".format(username))
-    print("\nResuming..\n")
-'''

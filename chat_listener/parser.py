@@ -3,13 +3,12 @@
 import logging
 
 logger = logging.getLogger()
-logger.debug("Hey oh, down here - {}".format(logger.name))
 
 
 class Message:
     def __init__(self):
         self.channel = ""
-        self.command = ""
+        self.irc_command = ""
         self.user = ""
         self.message = ""
         self.badges = ""
@@ -19,12 +18,13 @@ def read_message(response):
 
     msg = parse_message(response)
 
+    # Don't log the reply messages from Twitch
     if msg.user == "Twitch" and msg.message == "":
         pass
     else:
         logger.info("> @{}: {}".format(msg.user, msg.message))
-        logger.debug("Channel: {}  Command: {}  User: {}  Message: {}\nBadges: {}".format(
-            msg.channel, msg.command, msg.user, msg.message, msg.badges))
+        logger.debug("Channel: {}  IRC Command: {}  User: {}  Message: {}\nBadges: {}".format(
+            msg.channel, msg.irc_command, msg.user, msg.message, msg.badges))
 
     return msg
 
@@ -36,29 +36,31 @@ def parse_message(response):
     # Strip trailer (CR-LF) from response
     response = response.strip("\r\n")
 
-    # Split tags, commands, message
-    lines = response.split(":")
+    # Split on whitespace -> badges, user/channel payload, command, channel, and message
+    lines = response.split(" ", 4)
 
-    # Badges
     msg.badges = lines[0]
+    payload = lines[1]
+    msg.irc_command = lines[2]
+    msg.channel = lines[3]
+
+    # ToDo: Add some stuff to parse the badges
     # parsed_badges = parse_badges(badges)
 
-    # User / host, Command, and Channel
-    payload = lines[1].split()
+    # Sample payload for user messages:
+    # :makingtest!makingtest@makingtest.tmi.twitch.tv
 
-    user_string = payload[0].split("tmi.twitch.tv")
-    if user_string[0] == "":
+    user_string = payload.split("tmi.twitch.tv")
+    if user_string[0] == ":":
         msg.user = "Twitch"
     else:
-        msg.user = user_string[0].split("!")[0]
+        # The first list item after splitting on twitch.tv, split on "!",
+        # take the first item from that, and then remove the first character
+        msg.user = user_string[0].split("!")[0][1:]
 
-    msg.command = payload[1]
-    msg.channel = payload[2]
-
-    # If there is a message, it's after another ":" character
-    msg.message = ""
-    if len(lines) > 2:
-        msg.message = lines[2]
+    # Strip the first character (:)
+    if len(lines) > 4:
+        msg.message = lines[4][1:]
 
     return msg
 
