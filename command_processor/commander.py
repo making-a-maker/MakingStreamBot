@@ -6,12 +6,12 @@ import yaml
 # import traceback
 
 logger = logging.getLogger()
-leds_enabled = True
+leds_enabled = False
 
 SOLID = {}
 def load_solid_colors():
     # read in yaml file  with solid colors
-    with open("utils/led_colors.yaml") as y:
+    with open("common/led_colors.yaml") as y:
         SOLID = yaml.safe_load(y)["solid"]
     # convert lists into tuples (yaml has to store the values as lists, neopixel wants tuples)
     for k, v in SOLID.items():
