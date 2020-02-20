@@ -1,7 +1,7 @@
 
 # LED strip parameters
-led_brightness: .25
-num_leds: 144
+led_brightness: 0.5
+num_leds: 60
 
 # Twitch connection values
 host: "irc.twitch.tv"
