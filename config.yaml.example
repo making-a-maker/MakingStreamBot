@@ -2,6 +2,8 @@
 # LED strip parameters
 led_brightness: 0.5
 num_leds: 60
+led_order: GRB  # WS2812 LEDs are in GRB byte order
+bpp: 3  # Bytes per pixel - 3 for RGB, 4 for RGBW
 
 # Twitch connection values
 host: "irc.twitch.tv"

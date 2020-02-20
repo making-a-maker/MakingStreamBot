@@ -1,11 +1,8 @@
 #! /usr/bin/python3
 
-
-import argparse
 import logging
 from logging.handlers import RotatingFileHandler
 from logging import StreamHandler
-import os
 import signal
 import sys
 import threading
@@ -15,44 +12,16 @@ import yaml
 
 import chat_listener.listener as listener
 import command_processor.commander as commander
-from streammonitor.ThreadCommonObject import ThreadCommonObject
-from utils.log_format import ColorFormatter
+from tco import ThreadCommonObject
+from common.log_format import ColorFormatter
+from common.utils import get_config
 
-VERSION = "0.0.1"
+VERSION = "0.0.3"
 
-program_name = "streammonitor"
+program_name = "MakingBot"
 
-DEFAULT_CONFIG = "config.yaml"
-PRIVATE_CONFIG = "private_config.yaml"
+config = get_config()
 
-
-##############################
-# Command Line Arguments
-# and Config File Handling
-##############################
-parser = argparse.ArgumentParser()
-parser.add_argument("-c", "--config", help="Supply the path to an alternate config file\n "
-                                           "This config parameter will override defaults if keys match")
-args = parser.parse_args()
-
-if args.config:
-    config_file = args.config
-else:
-    config_file = PRIVATE_CONFIG
-
-config = {}
-# Read in configuration values
-if os.path.exists(DEFAULT_CONFIG):
-    with open("config.yaml") as pc:
-        print("Reading in config.yaml file")
-        config.update(yaml.unsafe_load(pc.read()))
-# If private config file exists, update with those values (private overrides public)
-if os.path.exists(config_file):
-    with open(config_file) as pc:
-        print("Reading in {} file".format(config_file))
-        config.update(yaml.unsafe_load(pc.read()))
-else:
-    print("WARNING: Config file \"{}\" does not exist.".format(config_file))
 
 #########################
 # Logging

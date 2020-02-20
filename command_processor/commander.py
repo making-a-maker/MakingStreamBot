@@ -2,19 +2,24 @@
 import logging
 import threading
 import time
+import yaml
 # import traceback
-from utils.led_colors import solid
-from command_processor import command_processor as cp
 
 logger = logging.getLogger()
 leds_enabled = True
 
-ORDER = None
+SOLID = {}
+def load_solid_colors():
+    # read in yaml file  with solid colors
+    with open("utils/led_colors.yaml") as y:
+        SOLID = yaml.safe_load(y)["solid"]
+    # convert lists into tuples (yaml has to store the values as lists, neopixel wants tuples)
+    for k, v in SOLID.items():
+        SOLID[k] = tuple(v)
 
 try:
     import board
     import neopixel
-    ORDER = neopixel.GRB
 except ImportError as e:
     logger.critical("board or neopixel modules not installed - disabling LED string")
     leds_enabled = False
@@ -39,8 +44,13 @@ class CommandProcessor(threading.Thread):
         self.ready = ready
 
         if leds_enabled:
-            self.pixels = neopixel.NeoPixel(board.D18, self.config["num_leds"],
-                                            brightness=self.config["led_brightness"], auto_write=False)
+            self.pixels = neopixel.NeoPixel(board.D18,
+                                            self.config["num_leds"],
+                                            brightness=self.config["led_brightness"],
+                                            auto_write=False, 
+                                            bpp=self.config["bpp"],
+                                            pixel_order=self.config["led_order"])
+        load_solid_colors()
 
     def run(self):
 
@@ -64,10 +74,11 @@ class CommandProcessor(threading.Thread):
             logger.info("Processing command: '{}'")
 
             if leds_enabled:
-                if cmd in solid.keys():
-                    cp.led_process(self.pixels, cmd)
+                load_solid_colors()
+                if cmd in SOLID.keys():
+                    led_process(self.pixels, SOLID[cmd])
                 elif cmd in ["pride", "rainbow"]:
-                    for i in range(5):
+                    for _ in range(5):
                         self.rainbow_cycle(0.005)
 
             with self.tco_lock:
@@ -108,3 +119,8 @@ class CommandProcessor(threading.Thread):
                 self.pixels[i] = self.wheel(pixel_index & 255)
             self.pixels.show()
             time.sleep(wait)
+
+def led_process(pixels, command):
+    # Strip the ! from the command
+    pixels.fill(command)
+    pixels.show()

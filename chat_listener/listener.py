@@ -8,7 +8,7 @@ import traceback
 import threading
 
 from chat_listener.parser import read_message
-from utils.log_colors import colors as c
+from common.log_colors import colors as c
 
 logger = logging.getLogger()
 

@@ -6,7 +6,7 @@ Uses ANSI colors
 
 import logging
 
-from utils.log_colors import *
+from common.log_colors import *
 
 # Custom ANSI colors for logs
 logging_levels = {"DEBUG": CYAN + "DEBUG" + CLEAR,
