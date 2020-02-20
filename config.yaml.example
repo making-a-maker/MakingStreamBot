@@ -1,4 +1,8 @@
 
+# LED strip parameters
+led_brightness: .25
+num_leds: 144
+
 # Twitch connection values
 host: "irc.twitch.tv"
 port: 6667
@@ -22,7 +26,4 @@ log_console_level: DEBUG
 # Command config parameters
 command_characters: "!"
 
-# LED strip parameters
-led_brightness: .25
-num_leds: 144
 
