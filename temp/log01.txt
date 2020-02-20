@@ -1,0 +1,36 @@
+aloar:MakingBot aaron$ /usr/local/bin/python3 /Users/aaron/code/MakingBot/temp/chat_printer.py
+Reading in config.yaml file
+Reading in <_io.TextIOWrapper name='private_config.yaml' mode='r' encoding='UTF-8'> file
++ :tmi.twitch.tv CAP * ACK :twitch.tv/commands
++ :tmi.twitch.tv 001 makingbot :Welcome, GLHF!
++ :tmi.twitch.tv 002 makingbot :Your host is tmi.twitch.tv
++ :tmi.twitch.tv 003 makingbot :This server is rather new
++ :tmi.twitch.tv 004 makingbot :-
++ :tmi.twitch.tv 375 makingbot :-
++ :tmi.twitch.tv 372 makingbot :You are in a maze of twisty passages, all alike.
++ :tmi.twitch.tv 376 makingbot :>
++ :tmi.twitch.tv GLOBALUSERSTATE
++ :makingbot!makingbot@makingbot.tmi.twitch.tv JOIN #making_a_maker
++ :makingbot.tmi.twitch.tv 353 makingbot = #making_a_maker :makingbot
++ :makingbot.tmi.twitch.tv 366 makingbot #making_a_maker :End of /NAMES list
++ :tmi.twitch.tv USERSTATE #making_a_maker
++ :tmi.twitch.tv ROOMSTATE #making_a_maker
++ :tmi.twitch.tv CAP * ACK :twitch.tv/commands twitch.tv/tags
+
+@badge-info=;badges=moderator/1;color=;display-name=MakingBot;emote-sets=0,300548756,472873131,488737509;mod=1;subscriber=0;user-type=mod :tmi.twitch.tv USERSTATE #making_a_maker
+
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/9;color=#2297B2;display-name=Making_A_Maker;emotes=;flags=;id=34151763-4f50-4cbd-92ef-92e9da882518;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582131913470;turbo=0;user-id=259533454;user-type= :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #making_a_maker :test
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/9;color=#2297B2;display-name=Making_A_Maker;emotes=;flags=;id=839bce96-6c59-47c3-be2e-084cdf5ed484;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582131937001;turbo=0;user-id=259533454;user-type= :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #making_a_maker :test
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/9;color=#2297B2;display-name=Making_A_Maker;emotes=;flags=0-3:A.0/P.6;id=898905d2-d4f1-44b8-bd6c-d28af205197b;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582131941569;turbo=0;user-id=259533454;user-type= :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #making_a_maker :fuck
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/9;color=#2297B2;display-name=Making_A_Maker;emote-only=1;emotes=1:0-1;flags=;id=4ea10c6a-9814-40a6-a63a-3f5c113167c2;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582131954105;turbo=0;user-id=259533454;user-type= :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #making_a_maker ::)
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/9;color=#2297B2;display-name=Making_A_Maker;emote-only=1;emotes=425618:0-2;flags=;id=21d716f2-36a6-4ab6-b5a1-6aedeca9e711;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582131958868;turbo=0;user-id=259533454;user-type= :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #making_a_maker :LUL
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/9;color=#2297B2;display-name=Making_A_Maker;emote-only=1;emotes=41:0-7;flags=;id=06645a20-c2b6-4764-8ea2-998260708332;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582131965876;turbo=0;user-id=259533454;user-type= :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #making_a_maker :Kreygasm
+
+
+^CTraceback (most recent call last):
+  File "/Users/aaron/code/MakingBot/temp/chat_printer.py", line 60, in <module>
+    response = s.recv(1024).decode()
+KeyboardInterrupt
+
+aloar:MakingBot aaron$ 

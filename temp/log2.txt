@@ -1,0 +1,12 @@
+STARTING LOG - 2020-02-19 09:51:45.321577
+Reading in config.yaml file
+Reading in <_io.TextIOWrapper name='private_config.yaml' mode='r' encoding='UTF-8'> file
+STARTING LOG - 2020-02-19 09:53:01.082799
+Reading in config files
+
+STARTING LOG - 2020-02-19 10:10:48.715055
+Reading in config files
+
+STARTING LOG - 2020-02-19 10:13:41.894224
+Reading in config files
+

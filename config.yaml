@@ -1,8 +1,11 @@
 
-
 # Twitch connection values
 host: "irc.twitch.tv"
 port: 6667
+
+# Bot Name and Channel
+nick: RoyGBiv
+channel: Bots4All
 
 # Logging to file and directory values, logging level
 log_default_level: DEBUG  # default level must be less or equal to the different handlers
@@ -16,9 +19,8 @@ log_file_level: DEBUG
 log_console_enabled: true
 log_console_level: DEBUG
 
-
 # Command config parameters
-command_characters: !!python/tuple ["!", ".", "/"]
+command_characters: "!"
 
 # LED strip parameters
 led_brightness: 1.0
