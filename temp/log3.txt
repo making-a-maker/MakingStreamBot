@@ -1,0 +1,203 @@
+STARTING LOG - 2020-02-19 21:08:02.491352
+Reading in config files
+
+{'host': 'irc.twitch.tv', 'port': 6667, 'nick': 'makingbot', 'channel': 'making_a_maker', 'log_default_level': 'DEBUG', 'log_file_enabled': True, 'log_file_directory': 'logs/', 'log_file_level': 'DEBUG', 'log_console_enabled': True, 'log_console_level': 'DEBUG', 'command_characters': '!', 'led_brightness': 1.0, 'num_leds': 60, 'pass': 'oauth:exw6ams294gfj6kmynsxc0yci4f20y'}
+creating socket
+connecting socket
+sending PASS
+sending NICK
+sending JOIN
+sending CAP REQ commands
+sending CAP REQ tags
+sending CAP REQ membership
+joining room
++ :tmi.twitch.tv 001 makingbot :Welcome, GLHF!
++ :tmi.twitch.tv 002 makingbot :Your host is tmi.twitch.tv
++ :tmi.twitch.tv 003 makingbot :This server is rather new
++ :tmi.twitch.tv 004 makingbot :-
++ :tmi.twitch.tv 375 makingbot :-
++ :tmi.twitch.tv 372 makingbot :You are in a maze of twisty passages, all alike.
++ :tmi.twitch.tv 376 makingbot :>
++ :makingbot!makingbot@makingbot.tmi.twitch.tv JOIN #making_a_maker
++ :makingbot.tmi.twitch.tv 353 makingbot = #making_a_maker :makingbot
++ :makingbot.tmi.twitch.tv 366 makingbot #making_a_maker :End of /NAMES list
++ :tmi.twitch.tv CAP * ACK :twitch.tv/commands
++ :tmi.twitch.tv CAP * ACK :twitch.tv/tags
++ :tmi.twitch.tv CAP * ACK :twitch.tv/membership
+@badge-info=;badges=moderator/1;color=;display-name=MakingBot;emote-sets=0,300548756,472873131,488737509;mod=1;subscriber=0;user-type=mod :tmi.twitch.tv USERSTATE #making_a_maker
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/9;color=#2297B2;display-name=Making_A_Maker;emotes=;flags=;id=742c28b5-b419-4b94-8a94-c5a79a0e6052;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582175310137;turbo=0;user-id=259533454;user-type= :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #making_a_maker :check
+
+@badge-info=subscriber/2;badges=subscriber/0,bits-charity/1;color=#934A4A;display-name=the_swk;emotes=;flags=;id=677cc12f-6184-4954-b0e4-0be872c18a05;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582175314664;turbo=0;user-id=268396072;user-type= :the_swk!the_swk@the_swk.tmi.twitch.tv PRIVMSG #making_a_maker :doesnt the server ping and you have to pong it or get booted?
+
+@badge-info=;badges=;color=#1A9F3B;display-name=polerin;emote-only=1;emotes=301013827:0-9;flags=;id=2bb36113-3b8c-4882-aa93-27b15bf3da3e;mod=0;room-id=259533454;subscriber=0;tmi-sent-ts=1582175316759;turbo=0;user-id=39023189;user-type= :polerin!polerin@polerin.tmi.twitch.tv PRIVMSG #making_a_maker :poleriAugh
+
+@badge-info=subscriber/2;badges=subscriber/0,bits-charity/1;color=#934A4A;display-name=the_swk;emotes=;flags=;id=d44960fd-5ff1-4562-a008-e25b1b136fe2;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582175325968;turbo=0;user-id=268396072;user-type= :the_swk!the_swk@the_swk.tmi.twitch.tv PRIVMSG #making_a_maker :thats an IRC spec thing
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/9;color=#2297B2;display-name=Making_A_Maker;emote-only=1;emotes=425618:0-2;flags=;id=a52cb96b-952c-4bc0-8d87-b9b54847bf39;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582175338779;turbo=0;user-id=259533454;user-type= :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #making_a_maker :LUL
+
+:polerin!polerin@polerin.tmi.twitch.tv JOIN #making_a_maker
+:wodowiesel!wodowiesel@wodowiesel.tmi.twitch.tv JOIN #making_a_maker
+:brobotix0x57!brobotix0x57@brobotix0x57.tmi.twitch.tv JOIN #making_a_maker
+:tenten!tenten@tenten.tmi.twitch.tv JOIN #making_a_maker
+:baddirection!baddirection@baddirection.tmi.twitch.tv JOIN #making_a_maker
+:danielbrown864!danielbrown864@danielbrown864.tmi.twitch.tv JOIN #making_a_maker
+:maxwattage!maxwattage@maxwattage.tmi.twitch.tv JOIN #making_a_maker
+:bigguyc!bigguyc@bigguyc.tmi.twitch.tv JOIN #making_a_maker
+:winsock!winsock@winsock.tmi.twitch.tv JOIN #making_a_maker
+:project454!project454@project454.tmi.twitch.tv JOIN #making_a_maker
+:wabes1!wabes1@wabes1.tmi.twitch.tv JOIN #making_a_maker
+:acouncilofone!acouncilofone@acouncilofone.tmi.twitch.tv JOIN #making_a_maker
+:anotherttvviewer!anotherttvviewer@anotherttvviewer.tmi.twitch.tv JOIN #making_a_maker
+:enabledworkshop!enabledworkshop@enabledworkshop.tmi.twitch.tv JOIN #making_a_maker
+:fetishlace!fetishlace@fetish
+lace.tmi.twitch.tv JOIN #making_a_maker
+:the_swk!the_swk@the_swk.tmi.twitch.tv JOIN #making_a_maker
+:marant!marant@marant.tmi.twitch.tv JOIN #making_a_maker
+:commanderroot!commanderroot@commanderroot.tmi.twitch.tv JOIN #making_a_maker
+:virgoproz!virgoproz@virgoproz.tmi.twitch.tv JOIN #making_a_maker
+:adivek23!adivek23@adivek23.tmi.twitch.tv JOIN #making_a_maker
+:pr0sp3ct7!pr0sp3ct7@pr0sp3ct7.tmi.twitch.tv JOIN #making_a_maker
+:v_and_k!v_and_k@v_and_k.tmi.twitch.tv JOIN #making_a_maker
+:making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv JOIN #making_a_maker
+:tehlissa!tehlissa@tehlissa.tmi.twitch.tv JOIN #making_a_maker
+:chicks0904!chicks0904@chicks0904.tmi.twitch.tv JOIN #making_a_maker
+:shiloh_mae!shiloh_mae@shiloh_mae.tmi.twitch.tv JOIN #making_a_maker
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/9;color=#2297B2;display-name=Making_A_Maker;emote-only=1;emotes=300193452:0-8;flags=;id=073957d2-4714-4ae3-8841-65f2fc0567e7;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582175347296;turbo=0;user-id=259533454;user-type= :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #making_a_maker :making7Hi
+
+@badge-info=;badges=;color=#1A9F3B;display-name=polerin;emotes=;flags=0-3:P.5;id=208a43f0-97aa-4973-859f-792ad194ac69;mod=0;room-id=259533454;subscriber=0;tmi-sent-ts=1582175350583;turbo=0;user-id=39023189;user-type= :polerin!polerin@polerin.tmi.twitch.tv PRIVMSG #making_a_maker :shit
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/9;color=#2297B2;display-name=Making_A_Maker;emotes=;flags=0-3:A.0/P.6;id=fdb16eac-6f73-4adb-b38c-90ea45ded9ac;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582175350781;turbo=0;user-id=259533454;user-type= :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #making_a_maker :fuck
+
+@badge-info=subscriber/2;badges=subscriber/0,bits-charity/1;color=#934A4A;display-name=the_swk;emotes=;flags=0-4:S.5;id=40bfe7a5-99a2-4f5a-885b-bad6ac38a7e4;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582175367920;turbo=0;user-id=268396072;user-type= :the_swk!the_swk@the_swk.tmi.twitch.tv PRIVMSG #making_a_maker :porno
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/9;color=#2297B2;display-name=Making_A_Maker;emotes=;flags=0-4:S.5;id=bfb28498-2f5d-42de-992b-a8254c547001;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582175375631;turbo=0;user-id=259533454;user-type= :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #making_a_maker :bewbs
+
+@badge-info=;badges=bits-charity/1;color=#00FF7F;display-name=brobotix0x57;emotes=;flags=;id=dd40be81-6a16-46fd-b44e-26d4746f5e3a;mod=0;room-id=259533454;subscriber=0;tmi-sent-ts=1582175381364;turbo=0;user-id=53645856;user-type= :brobotix0x57!brobotix0x57@brobotix0x57.tmi.twitch.tv PRIVMSG #making_a_maker :Making a turd byrgler
+
+@badge-info=subscriber/2;badges=subscriber/0,bits-charity/1;color=#934A4A;display-name=the_swk;emotes=;flags=;id=b7348980-63fc-4592-86ff-9540394cfef1;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582175390963;turbo=0;user-id=268396072;user-type= :the_swk!the_swk@the_swk.tmi.twitch.tv PRIVMSG #making_a_maker :F360 gets blocked by automod sometimes for some reason
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/9;color=#2297B2;display-name=Making_A_Maker;emotes=;flags=0-2:P.6;id=86758a14-0118-4312-9752-943e6984b798;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582175399751;turbo=0;user-id=259533454;user-type= :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #making_a_maker :fuc
+
+@badge-info=subscriber/6;badges=moderator/1,subscriber/6;color=#56B43A;display-name=EnabledWorkshop;emotes=;flags=;id=632d7feb-5d0b-4869-9d65-bb3de62f08a1;mod=1;room-id=259533454;subscriber=1;tmi-sent-ts=1582175399790;turbo=0;user-id=280451135;user-type=mod :enabledworkshop!enabledworkshop@enabledworkshop.tmi.twitch.tv PRIVMSG #making_a_maker :lol
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/9;color=#2297B2;display-name=Making_A_Maker;emotes=;flags=;id=b39de073-711e-4f26-acf5-c8d5bd2a1d33;mod=0;room-id=259533454;subscriber=1;tmi-sent-ts=1582175410731;turbo=0;user-id=259533454;user-type= :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #making_a_maker :F360
+
+STARTING LOG - 2020-02-19 21:12:32.252462
+Reading in config files
+
+{'host': 'irc.twitch.tv', 'port': 6667, 'nick': 'makingbot', 'channel': 'polerin', 'log_default_level': 'DEBUG', 'log_file_enabled': True, 'log_file_directory': 'logs/', 'log_file_level': 'DEBUG', 'log_console_enabled': True, 'log_console_level': 'DEBUG', 'command_characters': '!', 'led_brightness': 1.0, 'num_leds': 60, 'pass': 'oauth:exw6ams294gfj6kmynsxc0yci4f20y'}
+creating socket
+connecting socket
+sending PASS
+sending NICK
+sending JOIN
+sending CAP REQ commands
+sending CAP REQ tags
+sending CAP REQ membership
+joining room
++ :tmi.twitch.tv 001 makingbot :Welcome, GLHF!
++ :tmi.twitch.tv 002 makingbot :Your host is tmi.twitch.tv
++ :tmi.twitch.tv 003 makingbot :This server is rather new
++ :tmi.twitch.tv 004 makingbot :-
++ :tmi.twitch.tv 375 makingbot :-
++ :tmi.twitch.tv 372 makingbot :You are in a maze of twisty passages, all alike.
++ :tmi.twitch.tv 376 makingbot :>
++ :makingbot!makingbot@makingbot.tmi.twitch.tv JOIN #polerin
++ :makingbot.tmi.twitch.tv 353 makingbot = #polerin :makingbot
++ :makingbot.tmi.twitch.tv 366 makingbot #polerin :End of /NAMES list
++ :tmi.twitch.tv CAP * ACK :twitch.tv/commands
++ :tmi.twitch.tv CAP * ACK :twitch.tv/tags
++ :tmi.twitch.tv CAP * ACK :twitch.tv/membership
+@badge-info=;badges=;color=;display-name=MakingBot;emote-sets=0,300548756,472873131,488737509;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #polerin
+
+:nightbot!nightbot@nightbot.tmi.twitch.tv JOIN #polerin
+:polerin!polerin@polerin.tmi.twitch.tv JOIN #polerin
+:propuke!propuke@propuke.tmi.twitch.tv JOIN #polerin
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/0;color=#1A9F3B;display-name=polerin;emote-only=1;emotes=301013827:0-9;flags=;id=491297af-b406-4919-9529-fa91419fdc5e;mod=0;room-id=39023189;subscriber=1;tmi-sent-ts=1582175565943;turbo=0;user-id=39023189;user-type= :polerin!polerin@polerin.tmi.twitch.tv PRIVMSG #polerin :poleriAugh
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/0;color=#1A9F3B;display-name=polerin;emotes=;flags=0-3:P.5;id=db3aad26-37f5-46aa-9911-c9e1cb254235;mod=0;room-id=39023189;subscriber=1;tmi-sent-ts=1582175567222;turbo=0;user-id=39023189;user-type= :polerin!polerin@polerin.tmi.twitch.tv PRIVMSG #polerin :shit
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/0;color=#1A9F3B;display-name=polerin;emotes=;flags=0-3:A.0/P.6;id=cb199705-ca87-476d-ae34-edeba054c21e;mod=0;room-id=39023189;subscriber=1;tmi-sent-ts=1582175569341;turbo=0;user-id=39023189;user-type= :polerin!polerin@polerin.tmi.twitch.tv PRIVMSG #polerin :fuck
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/0;color=#1A9F3B;display-name=polerin;emotes=;flags=;id=b4ea6429-dce8-4ee3-ab7d-3f49bafef18f;mod=0;room-id=39023189;subscriber=1;tmi-sent-ts=1582175572123;turbo=0;user-id=39023189;user-type= :polerin!polerin@polerin.tmi.twitch.tv PRIVMSG #polerin :wtf
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/0;color=#1A9F3B;display-name=polerin;emotes=;flags=0-2:P.6;id=b0584d93-cb0b-4969-b48c-65382c304a03;mod=0;room-id=39023189;subscriber=1;tmi-sent-ts=1582175573066;turbo=0;user-id=39023189;user-type= :polerin!polerin@polerin.tmi.twitch.tv PRIVMSG #polerin :fuc
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/0;color=#1A9F3B;display-name=polerin;emotes=;flags=0-3:P.6;id=482864d3-8907-43f9-afb7-b20eaf9b599a;mod=0;room-id=39023189;subscriber=1;tmi-sent-ts=1582175574728;turbo=0;user-id=39023189;user-type= :polerin!polerin@polerin.tmi.twitch.tv PRIVMSG #polerin :!fuc
+
+@badge-info=founder/7;badges=moderator/1,founder/0,sub-gift-leader/1;color=#2297B2;display-name=Making_A_Maker;emotes=;flags=;id=c1ebde69-3b88-4892-8c5f-06fa9ad9218d;mod=1;room-id=39023189;subscriber=0;tmi-sent-ts=1582175577488;turbo=0;user-id=259533454;user-type=mod :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #polerin :F360
+
+@badge-info=founder/7;badges=moderator/1,founder/0,sub-gift-leader/1;color=#2297B2;display-name=Making_A_Maker;emotes=;flags=;id=35534963-6996-4402-90eb-10f045cce104;mod=1;room-id=39023189;subscriber=0;tmi-sent-ts=1582175587145;turbo=0;user-id=259533454;user-type=mod :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #polerin :Suck
+
+@badge-info=founder/7;badges=moderator/1,founder/0,sub-gift-leader/1;color=#2297B2;display-name=Making_A_Maker;emotes=;flags=;id=b3c2e80c-beba-415d-951f-61e4f8ab75d1;mod=1;room-id=39023189;subscriber=0;tmi-sent-ts=1582175628871;turbo=0;user-id=259533454;user-type=mod :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #polerin :!red
+
+:making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv JOIN #polerin
+
+Pinged by twitch, ponging.. 
+@badge-info=founder/7;badges=moderator/1,founder/0,sub-gift-leader/1;color=#2297B2;display-name=Making_A_Maker;emotes=;flags=;id=3b368ae4-b756-4155-8d5b-0e0626b4d597;mod=1;room-id=39023189;subscriber=0;tmi-sent-ts=1582175833804;turbo=0;user-id=259533454;user-type=mod :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #polerin :tewst
+
+@badge-info=;badges=;color=;display-name=TearOBit;emotes=;flags=;id=8c23b6c5-02a1-45a1-95d6-b4e928ce314b;mod=0;room-id=39023189;subscriber=0;tmi-sent-ts=1582175840451;turbo=0;user-id=492931050;user-type= :tearobit!tearobit@tearobit.tmi.twitch.tv PRIVMSG #polerin :2020-02-20 05:17:20.394006 - Successfully joined chat
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/0;color=#1A9F3B;display-name=polerin;emote-only=1;emotes=301013827:0-9;flags=;id=854c2fd9-ba48-49db-a996-ede9229068dd;mod=0;room-id=39023189;subscriber=1;tmi-sent-ts=1582175853018;turbo=0;user-id=39023189;user-type= :polerin!polerin@polerin.tmi.twitch.tv PRIVMSG #polerin :poleriAugh
+
+:tearobit!tearobit@tearobit.tmi.twitch.tv JOIN #polerin
+
+@badge-info=;badges=;color=;display-name=TearOBit;emotes=;flags=;id=ccd70adf-b62b-413c-8a85-a2a302835f4f;mod=0;room-id=39023189;subscriber=0;tmi-sent-ts=1582175883566;turbo=0;user-id=492931050;user-type= :tearobit!tearobit@tearobit.tmi.twitch.tv PRIVMSG #polerin :2020-02-20 05:18:03.512588 - Successfully joined chat
+
+@badge-info=;badges=;color=;display-name=TearOBit;emotes=;flags=;id=16dcdab1-3a94-4b03-80ff-3375e9292b01;mod=0;room-id=39023189;subscriber=0;tmi-sent-ts=1582175886471;turbo=0;user-id=492931050;user-type= :tearobit!tearobit@tearobit.tmi.twitch.tv PRIVMSG #polerin :2020-02-20 05:18:06.410782 - Successfully joined chat
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/0;color=#1A9F3B;display-name=polerin;emotes=;flags=0-3:A.0/P.6;id=5495ad12-c19a-48b8-be2b-c0557057c1e0;mod=0;room-id=39023189;subscriber=1;tmi-sent-ts=1582175908442;turbo=0;user-id=39023189;user-type= :polerin!polerin@polerin.tmi.twitch.tv PRIVMSG #polerin :fuck
+
+:tmi.twitch.tv HOSTTARGET #polerin :making_a_maker 0
+
+@msg-id=host_on :tmi.twitch.tv NOTICE #polerin :Now hosting Making_A_Maker.
+
+@badge-info=;badges=;color=;display-name=TearOBit;emotes=;flags=;id=fbacf408-ac68-47f6-9197-4a26b7cd4409;mod=0;room-id=39023189;subscriber=0;tmi-sent-ts=1582176014552;turbo=0;user-id=492931050;user-type= :tearobit!tearobit@tearobit.tmi.twitch.tv PRIVMSG #polerin :2020-02-20 05:20:14.502645 - Successfully joined chat
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/0;color=#1A9F3B;display-name=polerin;emote-only=1;emotes=301013827:0-9;flags=;id=999f5aa7-f0d4-46e7-887e-d910e67991e0;mod=0;room-id=39023189;subscriber=1;tmi-sent-ts=1582176023955;turbo=0;user-id=39023189;user-type= :polerin!polerin@polerin.tmi.twitch.tv PRIVMSG #polerin :poleriAugh
+
+Pinged by twitch, ponging.. 
+@badge-info=founder/7;badges=moderator/1,founder/0,sub-gift-leader/1;color=#2297B2;display-name=Making_A_Maker;emotes=;flags=0-3:P.6/S.6;id=86cc5045-c561-4311-900c-ef23a01f08d3;mod=1;room-id=39023189;subscriber=0;tmi-sent-ts=1582176235670;turbo=0;user-id=259533454;user-type=mod :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #polerin :cock
+
+Pinged by twitch, ponging.. 
+STARTING LOG - 2020-02-19 21:34:02.855528
+Reading in config files
+
+{'host': 'irc.twitch.tv', 'port': 6667, 'nick': 'makingbot', 'channel': 'polerin', 'log_default_level': 'DEBUG', 'log_file_enabled': True, 'log_file_directory': 'logs/', 'log_file_level': 'DEBUG', 'log_console_enabled': True, 'log_console_level': 'DEBUG', 'command_characters': '!', 'led_brightness': 0.25, 'num_leds': 144, 'pass': 'oauth:exw6ams294gfj6kmynsxc0yci4f20y'}
+creating socket
+connecting socket
+sending PASS
+sending NICK
+sending JOIN
+sending CAP REQ commands
+sending CAP REQ tags
+sending CAP REQ membership
+joining room
++ :tmi.twitch.tv 001 makingbot :Welcome, GLHF!
++ :tmi.twitch.tv 002 makingbot :Your host is tmi.twitch.tv
++ :tmi.twitch.tv 003 makingbot :This server is rather new
++ :tmi.twitch.tv 004 makingbot :-
++ :tmi.twitch.tv 375 makingbot :-
++ :tmi.twitch.tv 372 makingbot :You are in a maze of twisty passages, all alike.
++ :tmi.twitch.tv 376 makingbot :>
++ :makingbot!makingbot@makingbot.tmi.twitch.tv JOIN #polerin
++ :makingbot.tmi.twitch.tv 353 makingbot = #polerin :makingbot
++ :makingbot.tmi.twitch.tv 366 makingbot #polerin :End of /NAMES list
++ :tmi.twitch.tv CAP * ACK :twitch.tv/commands
++ :tmi.twitch.tv CAP * ACK :twitch.tv/tags
++ :tmi.twitch.tv CAP * ACK :twitch.tv/membership
+@badge-info=;badges=;color=;display-name=MakingBot;emote-sets=0,300548756,472873131,488737509;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #polerin
+
+@badge-info=subscriber/10;badges=broadcaster/1,subscriber/0;color=#1A9F3B;display-name=polerin;emotes=;flags=15-18:A.0/P.6;id=bbdd426d-9b62-464b-84d4-45a80e8e1280;mod=0;room-id=39023189;subscriber=1;tmi-sent-ts=1582176851664;turbo=0;user-id=39023189;user-type= :polerin!polerin@polerin.tmi.twitch.tv PRIVMSG #polerin :this is a test fuck
+
+:propuke!propuke@propuke.tmi.twitch.tv JOIN #polerin
+:tearobit!tearobit@tearobit.tmi.twitch.tv JOIN #polerin
+:nightbot!nightbot@nightbot.tmi.twitch.tv JOIN #polerin
+:polerin!polerin@polerin.tmi.twitch.tv JOIN #polerin
+:making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv JOIN #polerin
+
+@badge-info=founder/7;badges=moderator/1,founder/0,sub-gift-leader/1;color=#2297B2;display-name=Making_A_Maker;emotes=;flags=;id=a7abdafd-503f-4a5a-bed7-b7b1a4a5d2e5;mod=1;room-id=39023189;subscriber=0;tmi-sent-ts=1582176897361;turbo=0;user-id=259533454;user-type=mod :making_a_maker!making_a_maker@making_a_maker.tmi.twitch.tv PRIVMSG #polerin :breasts
+

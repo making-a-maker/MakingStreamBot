@@ -15,7 +15,7 @@ PRIVATE_CONFIG = "private_config.yaml"
 logfile = "temp/log3.txt"
 def print_to_file(msg):
     with open(logfile, 'a') as f:
-        f.write(msg + "\n")
+        f.write("{}\n".format(msg))
 
 print_to_file("STARTING LOG - {}".format(datetime.datetime.now()))
 
@@ -36,7 +36,6 @@ print_to_file(config)
 # open socket
 print_to_file("creating socket")
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.settimeout(10)
 print_to_file("connecting socket")
 s.connect((config["host"], config["port"]))
 print_to_file("sending PASS")
@@ -81,5 +80,5 @@ while True:
         print_to_file("Pinged by twitch, ponging.. ")
 
     else:
-        print_to_file("\n{}".format(response))
+        print_to_file("{}".format(response))
 

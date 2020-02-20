@@ -23,6 +23,6 @@ log_console_level: DEBUG
 command_characters: "!"
 
 # LED strip parameters
-led_brightness: 1.0
-num_leds: 60
+led_brightness: .25
+num_leds: 144
 

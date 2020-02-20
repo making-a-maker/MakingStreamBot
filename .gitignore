@@ -1,9 +1,9 @@
 .idea/
 *__pycache__*
+.vscode/
+.DS_Store
+*.swp
 
 *.log
 
-.DS_Store
-
-test/
 private_config.yaml
