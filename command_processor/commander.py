@@ -6,7 +6,7 @@ import yaml
 # import traceback
 
 logger = logging.getLogger()
-leds_enabled = False
+leds_enabled = True
 
 SOLID = {}
 def load_solid_colors():
