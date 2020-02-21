@@ -1,0 +1,61 @@
+
+1) RENAME AND REORGANIZE THIS BULLSHIT
+
+Fix the module thing - change it back to just a script
+
+automated install
+ - python3
+ - git
+ - vim?
+ - auto-git bot program
+ - make log folder
+ - pip
+ - pyyaml
+ - neopixel / RPi libraries
+ - set up to auto run on boot
+
+investigate the need for sudo to run bot program
+ - why? can I get rid of it?
+
+setup script - copy example config files (config.yaml.example -> config.yaml)
+ - then add config.yaml to the .gitignore (preseve local configs)
+
+move colors into plain text table (yaml file?)
+
+rotating log files (keep sizes down)
+re-evaluate what is logged, and where
+
+
+
+
+Future-things
+alternate command routes (phone, IFTTT)
+Alert response from events on Twitch
+
+message queue
+ - separate the chat bot into one program, leds in another program
+   - chat bot publishes the commands / messages
+   - led program listens
+command queue - minimum time between commands (prevent spam)
+
+Safety Mode - disable the color shifting - mod command (Banzai Baby-esque)
+
+Alarm Clocks - time based LED things (for polerin's meeting)
+
+change intensity by command
+Other animations - gradients, switch between colors, patterns, linear-interpolation
+user defined routines - color to color, time frames, shifts
+
+Watch chat for game messages - success and failure messages (which could then trigger sounds)
+
+An image that is flash-able
+Or a single package for Raspbian
+
+
+
+
+
+
+
+
+
