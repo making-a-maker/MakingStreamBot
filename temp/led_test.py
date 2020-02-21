@@ -1,6 +1,7 @@
 
 import time
 
+
 try:
     import board
     import neopixel
@@ -16,9 +17,26 @@ pixels = neopixel.NeoPixel(board.D18,
          bpp=4,
          pixel_order=(1, 0, 2, 3))
 
-pixels.fill((255, 0, 0))
+while True:
+    print("Red")
+    pixels.fill((255, 0, 0, 0))
+    pixels.show()
+    time.sleep(5)
 
+    print("Green")
+    pixels.fill((0, 255, 0, 0))
+    pixels.show()
+    time.sleep(5)
 
+    print("Blue")
+    pixels.fill((0, 0, 255, 0))
+    pixels.show()
+    time.sleep(5)
+
+    print("White")
+    pixels.fill((0, 0, 0, 255))
+    pixels.show()
+    time.sleep(5)
 
 
 
