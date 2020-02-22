@@ -99,4 +99,19 @@ cd MakingBot
 get oauth key from twitch, replace values in private_config.yaml
 
 
+#########################################################
+Potential next steps:
+
+automated installation
+2) led animations (multiple stages)
+break it up into multiple programs (long)
+1) text response in chat (colors)
+hex color handling
+pantone color handling
+
+
+Text responses
+Command Queue for leds
+bust it all apart
+
 

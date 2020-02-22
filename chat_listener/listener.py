@@ -6,6 +6,7 @@ import logging
 import socket
 import traceback
 import threading
+import yaml
 
 from chat_listener.parser import read_message
 from common.log_colors import colors as c
@@ -38,6 +39,8 @@ class ChatListener(threading.Thread):
         self.socket = None
 
         self.ready = ready
+
+        self.text_responses = load_text_responses()
 
     def run(self):
         logger.info("Chat Listener started running")
@@ -75,9 +78,14 @@ class ChatListener(threading.Thread):
                     if msg.message.startswith(tuple(self.config["command_characters"])):
                         logger.info("HEARD A COMMAND - User: {}  Command: {}".format(msg.user, msg.message))
 
-                        with self.tco_lock:
-                            self.tco.command = msg.user, msg.message
-                            self.tco.command_ready_flag.set()
+                        self.text_responses = load_text_responses()
+
+                        if msg.message in self.text_responses:
+                            self.chat(self.text_responses[msg.message])
+                        else:
+                            with self.tco_lock:
+                                self.tco.command = msg.user, msg.message
+                                self.tco.command_ready_flag.set()
 
             except Exception as e:
                 self.socket.close()
@@ -127,3 +135,11 @@ class ChatListener(threading.Thread):
                     loading = False
         self.chat(str(datetime.utcnow()) + " - Successfully joined chat")
 
+def load_text_responses():
+    try:
+        with open("common\\text_responses.yaml") as t:
+            text_responses = yaml.safe_load(t)
+    except FileNotFoundError:
+        logger.error("Text response file not found! Disabling text responses...")
+        text_responses = {}
+    return text_responses
