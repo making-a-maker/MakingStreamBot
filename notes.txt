@@ -54,8 +54,49 @@ Or a single package for Raspbian
 
 
 
+Raspbian Buster lite
+https://downloads.raspberrypi.org/raspbian_lite_latest
+
+balenaEtcher
 
 
+For security reasons, ssh is no longer enabled by default. 
+To enable it you need to place an empty file named ssh (no extension) in the root of the boot disk.
+/boot/ssh
+
+
+/boot/wpa_supplicant.conf
+Then paste the following into it (adjusting for your ISO 3166 alpha-2 country code, network name and network password):
+
+country=US
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+    ssid="NETWORK-NAME"
+    psk="NETWORK-PASSWORD"
+}
+
+default hostname:  raspberrypi
+default user: pi
+default password: raspberry 
+
+sudo raspi-config
+change password
+
+sudo apt update
+sudo apt upgrade
+
+sudo apt install python3 python3-pip git vim
+sudo pip3 install pyyaml
+
+git clone https://github.com/making-a-maker/MakingBot.git
+
+cd MakingBot
+
+./setup.sh
+
+get oauth key from twitch, replace values in private_config.yaml
 
 
 
