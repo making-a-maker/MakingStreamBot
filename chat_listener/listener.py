@@ -137,7 +137,7 @@ class ChatListener(threading.Thread):
 
 def load_text_responses():
     try:
-        with open("common\\text_responses.yaml") as t:
+        with open("common/text_responses.yaml") as t:
             text_responses = yaml.safe_load(t)
     except FileNotFoundError:
         logger.error("Text response file not found! Disabling text responses...")
