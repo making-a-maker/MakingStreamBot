@@ -74,6 +74,7 @@ class ChatListener(threading.Thread):
 
                     if msg.message.startswith(tuple(self.config["command_characters"])):
                         logger.info("HEARD A COMMAND - User: {}  Command: {}".format(msg.user, msg.message))
+
                         with self.tco_lock:
                             self.tco.command = msg.user, msg.message
                             self.tco.command_ready_flag.set()
