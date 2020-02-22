@@ -10,12 +10,15 @@ leds_enabled = True
 
 SOLID = {}
 def load_solid_colors():
+    solid_colors = {}
     # read in yaml file  with solid colors
     with open("common/led_colors.yaml") as y:
-        SOLID = yaml.safe_load(y)["solid"]
+        solid_colors = yaml.safe_load(y)["solid"]
     # convert lists into tuples (yaml has to store the values as lists, neopixel wants tuples)
-    for k, v in SOLID.items():
-        SOLID[k] = tuple(v)
+    for k, v in solid_colors.items():
+        solid_colors[k] = tuple(v)
+    return solid_colors
+
 
 try:
     import board
@@ -43,14 +46,15 @@ class CommandProcessor(threading.Thread):
         self.command = ()
         self.ready = ready
 
+        self.led_order = translate_led_order(self.config["led_order"])
+
         if leds_enabled:
             self.pixels = neopixel.NeoPixel(board.D18,
                                             self.config["num_leds"],
                                             brightness=self.config["led_brightness"],
                                             auto_write=False, 
-                                            bpp=self.config["bpp"],
-                                            pixel_order=self.config["led_order"])
-        load_solid_colors()
+                                            pixel_order=self.led_order)
+        SOLID = load_solid_colors()
 
     def run(self):
 
@@ -74,10 +78,13 @@ class CommandProcessor(threading.Thread):
             logger.info("Processing command: '{}'".format(cmd))
 
             if leds_enabled:
-                load_solid_colors()
+                SOLID = load_solid_colors()
                 if cmd in SOLID.keys():
+                    logger.debug("....Solid color: {}".format(cmd))
+                    logger.debug("type SOLID: {}   type S[c]: {}".format(type(SOLID), type(SOLID[cmd])))
                     led_process(self.pixels, SOLID[cmd])
                 elif cmd in ["pride", "rainbow"]:
+                    logger.debug("....Rainbow")
                     for _ in range(5):
                         self.rainbow_cycle(0.005)
 
@@ -124,3 +131,25 @@ def led_process(pixels, command):
     # Strip the ! from the command
     pixels.fill(command)
     pixels.show()
+    
+
+def translate_led_order(s):
+    if s == "RGB":
+        order = neopixel.RGB
+    elif s == "GRB":
+        order = neopixel.GRB
+    elif s == "RGBW":
+        order = neopixel.RGBW
+    elif s == "GRBW":
+        order = neopixel.GRBW
+    else:
+        logger.critical("LED Order in config.yaml is not valid!!")
+        exit(1)
+    return order
+
+
+
+
+
+
+

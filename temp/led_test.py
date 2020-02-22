@@ -14,8 +14,7 @@ pixels = neopixel.NeoPixel(board.D18,
          144,
          brightness=0.25,
          auto_write=False, 
-         bpp=4,
-         pixel_order=(1, 0, 2, 3))
+         pixel_order=neopixel.GRBW)
 
 while True:
     print("Red")
