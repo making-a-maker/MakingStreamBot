@@ -26,6 +26,6 @@ log_console_enabled: true
 log_console_level: DEBUG
 
 # Command config parameters
-command_characters: "!"
+command_characters: "!#"
 
 

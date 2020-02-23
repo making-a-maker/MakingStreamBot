@@ -74,7 +74,7 @@ class CommandProcessor(threading.Thread):
             logger.info("COMMAND = {}".format(self.command))
 
             # Strip off first character of command
-            cmd = self.command[1][1:]
+            cmd = self.command[1]
             logger.info("Processing command: '{}'".format(cmd))
 
             if leds_enabled:

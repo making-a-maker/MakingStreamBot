@@ -76,6 +76,7 @@ class ChatListener(threading.Thread):
                     # ToDo: Need to account for a RECONNECT command from IRC - needs to close and reconnect the socket.
 
                     if msg.message.startswith(tuple(self.config["command_characters"])):
+                        msg.message = msg.message.strip(self.config["command_characters"])
                         logger.info("HEARD A COMMAND - User: {}  Command: {}".format(msg.user, msg.message))
 
                         self.text_responses = load_text_responses()

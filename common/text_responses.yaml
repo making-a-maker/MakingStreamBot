@@ -2,6 +2,8 @@
 
 # To avoid issues with loading the yaml file, use single (or double) quotes around the text.
 # As long as that same quote mark isn't used in your text, it's ok.
+# Use this site to verify the yaml is totally valid and will load:
+# https://onlineyamltools.com/validate-yaml
 
 # Command: Response
 
