@@ -61,32 +61,30 @@ class CommandProcessor(threading.Thread):
                 # If queue is not empty, then get command, and proceed to process it
                 if not self.tco.command.empty():
                     self.command = self.tco.command.get()
+                    logger.info("Commands remaining = {}".format(self.tco.command.qsize()))
                 # However, if the queue is empty, wait for the event to trigger processing
                 # (trying to maintain responsiveness)
                 else:
                     self.command_ready_flag.wait()
                     logger.warning("COMMAND EVENT RECEIVED - Processing...")
+
+            # Strip off first character of command
+            cmd = self.command[1]
+            logger.info("Processing command: '{}'".format(cmd))
+
+            if leds_enabled:
+                SOLID = utils.load_solid_colors()
+                if cmd in SOLID.keys():
+                    led_process(self.pixels, SOLID[cmd])
+                elif cmd in ["pride", "rainbow"]:
+                    logger.debug("....Rainbow")
+                    for _ in range(5):
+                        self.rainbow_cycle(0.005)
+
+            with self.tco_lock:
+                self.tco.command_ready_flag.clear()
             
-
-                logger.info("COMMAND = {}".format(self.command))
-
-                # Strip off first character of command
-                cmd = self.command[1]
-                logger.info("Processing command: '{}'".format(cmd))
-
-                if leds_enabled:
-                    SOLID = utils.load_solid_colors()
-                    if cmd in SOLID.keys():
-                        led_process(self.pixels, SOLID[cmd])
-                    elif cmd in ["pride", "rainbow"]:
-                        logger.debug("....Rainbow")
-                        for _ in range(5):
-                            self.rainbow_cycle(0.005)
-
-                with self.tco_lock:
-                    self.tco.command_ready_flag.clear()
-                
-                time.sleep(self.config["min_command_time"])
+            time.sleep(self.config["min_command_time"])
 
 # Proposed commands
 # add user
