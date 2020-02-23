@@ -82,7 +82,8 @@ class ChatListener(threading.Thread):
                         self.text_responses = load_text_responses()
 
                         if msg.message in self.text_responses:
-                            self.chat(self.text_responses[msg.message])
+                            for line in self.text_responses[msg.message].splitlines():
+                                self.chat(line)
                         else:
                             with self.tco_lock:
                                 self.tco.command = msg.user, msg.message

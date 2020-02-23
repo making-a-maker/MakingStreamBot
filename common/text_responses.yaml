@@ -1,22 +1,27 @@
 
 
-# To avoid issues with loading the yaml file, use single (or double) quotes around the text.
-# As long as that same quote mark isn't used in your text, it's ok.
+# Responses must be in double quotes if it contains quote marks. 
+# Double quotes inside the response can be used, but must be escaped.
+# Newlines can be used (to create multiple responses), but must be in double quotes, and escaped like:
+# key: "This is a multiline message\\nwith a new line character"
+# The bot will respond with each line as a separate message
+
+
 # Use this site to verify the yaml is totally valid and will load:
 # https://onlineyamltools.com/validate-yaml
 
 # Command: Response
 
 cookbook: 
-  "One of Aaron's favorite cookbooks is One Pan Wonders, by Cooks Country. \nYou can get it here: https://amzn.to/2NNJ14K"
+  "One of Aaron's favorite cookbooks is One Pan Wonders, by Cooks Country.\nYou can get it here: https://amzn.to/2NNJ14K"
 creedo: 
-  "'No project is complete until you bleed on it.'' - Aaron's Family Creedo, 1791"
+  "\"No project is complete until you bleed on it.\" - Aaron's Family Creedo, 1791"
 rolecall: 
   LED Bot responding...
 iamaaron: 
   "Welcome to the channel. I'm Aaron of Making A Maker. Here you'll find engineering, programming, and woodworking. Thanks for stopping by!"
 bandsaw: 
-  'The bandsaw is a Jet JWBS-14SFX, 14-inch bandsaw. It has 13.5" resaw, and a 13" throat capacity. It takes a 116.25" blade - https://amzn.to/2YiOJwQ'
+  "The bandsaw is a Jet JWBS-14SFX, 14-inch bandsaw. It has 13.5\" resaw, and a 13\" throat capacity. It takes a 116.25\" blade - https://amzn.to/2YiOJwQ"
 
 keyboard: "Aaron is using a Corsair K70 RGB Keyboard. You can get it here: https://amzn.to/39UxesR\nMore commands: !mouse, !mousepad, and !headset"
 mouse: "Aaron is using a Corsair M65 ELITE RGB Gaming Mouse. You can get it here: https://amzn.to/37S7Hzk\nMore commands !mousepad, !headset, and !keyboard"
