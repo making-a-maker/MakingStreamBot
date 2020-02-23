@@ -5,20 +5,12 @@ import time
 import yaml
 # import traceback
 
+from common import utils
+
 logger = logging.getLogger()
 leds_enabled = True
 
-
-def load_solid_colors():
-    solid_colors = {}
-    # read in yaml file  with solid colors
-    with open("common/led_colors.yaml") as y:
-        solid_colors = yaml.safe_load(y)["solid"]
-    # convert lists into tuples (yaml has to store the values as lists, neopixel wants tuples)
-    for k, v in solid_colors.items():
-        solid_colors[k] = tuple(v)
-    return solid_colors
-SOLID = load_solid_colors()
+SOLID = utils.load_solid_colors()
 
 try:
     import board
@@ -77,7 +69,7 @@ class CommandProcessor(threading.Thread):
             logger.info("Processing command: '{}'".format(cmd))
 
             if leds_enabled:
-                SOLID = load_solid_colors()
+                SOLID = utils.load_solid_colors()
                 if cmd in SOLID.keys():
                     led_process(self.pixels, SOLID[cmd])
                 elif cmd in ["pride", "rainbow"]:

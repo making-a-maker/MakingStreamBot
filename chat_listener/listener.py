@@ -10,6 +10,7 @@ import yaml
 
 from chat_listener.parser import read_message
 from common.log_colors import colors as c
+from common import utils
 
 logger = logging.getLogger()
 
@@ -40,7 +41,7 @@ class ChatListener(threading.Thread):
 
         self.ready = ready
 
-        self.text_responses = load_text_responses()
+        self.text_responses = utils.load_text_responses()
 
     def run(self):
         logger.info("Chat Listener started running")
@@ -79,7 +80,7 @@ class ChatListener(threading.Thread):
                         msg.message = msg.message.strip(self.config["command_characters"])
                         logger.info("HEARD A COMMAND - User: {}  Command: {}".format(msg.user, msg.message))
 
-                        self.text_responses = load_text_responses()
+                        self.text_responses = utils.load_text_responses()
 
                         if msg.message in self.text_responses:
                             for line in self.text_responses[msg.message].splitlines():
@@ -137,11 +138,3 @@ class ChatListener(threading.Thread):
                     loading = False
         self.chat(str(datetime.utcnow()) + " - Successfully joined chat")
 
-def load_text_responses():
-    try:
-        with open("common/text_responses.yaml") as t:
-            text_responses = yaml.safe_load(t)
-    except FileNotFoundError:
-        logger.error("Text response file not found! Disabling text responses...")
-        text_responses = {}
-    return text_responses
