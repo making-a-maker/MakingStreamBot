@@ -8,7 +8,7 @@ import yaml
 logger = logging.getLogger()
 leds_enabled = True
 
-SOLID = {}
+
 def load_solid_colors():
     solid_colors = {}
     # read in yaml file  with solid colors
@@ -18,7 +18,7 @@ def load_solid_colors():
     for k, v in solid_colors.items():
         solid_colors[k] = tuple(v)
     return solid_colors
-
+SOLID = load_solid_colors()
 
 try:
     import board
@@ -79,8 +79,6 @@ class CommandProcessor(threading.Thread):
             if leds_enabled:
                 SOLID = load_solid_colors()
                 if cmd in SOLID.keys():
-                    logger.debug("....Solid color: {}".format(cmd))
-                    logger.debug("type SOLID: {}   type S[c]: {}".format(type(SOLID), type(SOLID[cmd])))
                     led_process(self.pixels, SOLID[cmd])
                 elif cmd in ["pride", "rainbow"]:
                     logger.debug("....Rainbow")
