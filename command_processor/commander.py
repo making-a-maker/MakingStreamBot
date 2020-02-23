@@ -54,7 +54,6 @@ class CommandProcessor(threading.Thread):
                                             brightness=self.config["led_brightness"],
                                             auto_write=False, 
                                             pixel_order=self.led_order)
-        SOLID = load_solid_colors()
 
     def run(self):
 
@@ -69,7 +68,7 @@ class CommandProcessor(threading.Thread):
             self.command_ready_flag.wait()
             logger.warning("COMMAND EVENT RECEIVED - Processing...")
             with self.tco_lock:
-                self.command = self.tco.command
+                self.command = self.tco.command.get()
 
             logger.info("COMMAND = {}".format(self.command))
 
@@ -90,6 +89,8 @@ class CommandProcessor(threading.Thread):
 
             with self.tco_lock:
                 self.tco.command_ready_flag.clear()
+            
+            time.sleep(self.config["min_command_time"])
 
 # Proposed commands
 # add user

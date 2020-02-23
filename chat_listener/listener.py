@@ -86,7 +86,7 @@ class ChatListener(threading.Thread):
                                 self.chat(line)
                         else:
                             with self.tco_lock:
-                                self.tco.command = msg.user, msg.message
+                                self.tco.command.put((msg.user, msg.message))
                                 self.tco.command_ready_flag.set()
 
             except Exception as e:

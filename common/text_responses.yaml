@@ -2,8 +2,7 @@
 
 # Responses must be in double quotes if it contains quote marks. 
 # Double quotes inside the response can be used, but must be escaped.
-# Newlines can be used (to create multiple responses), but must be in double quotes, and escaped like:
-# key: "This is a multiline message\\nwith a new line character"
+# Newlines can be used (to create multiple responses), but must be in double quotes
 # The bot will respond with each line as a separate message
 
 

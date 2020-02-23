@@ -27,5 +27,6 @@ log_console_level: DEBUG
 
 # Command config parameters
 command_characters: "!#"
+min_command_time: 1000
 
 
