@@ -92,7 +92,7 @@ class CommandProcessor(threading.Thread):
 
                 time.sleep(self.config["min_command_time"])
             else:
-                time.sleep(0.25)
+                time.sleep(0.1)
 
 # Proposed commands
 # add user
