@@ -1,12 +1,22 @@
 
 
+# To avoid issues with loading the yaml file, use single (or double) quotes around the text.
+# As long as that same quote mark isn't used in your text, it's ok.
 
 # Command: Response
 
-cookbook: "One of Aaron's favorite cookbooks is One Pan Wonders, by Cooks Country. \n You can get it here: https://amzn.to/2NNJ14K"
-creedo: "\"No project is complete until you bleed on it.\" - Aaron's Family Creedo, 1791"
-rolecall: LED Bot responding...
-iamaaron: Welcome to the channel. I'm Aaron of Making A Maker. Here you'll find engineering, programming, and woodworking. Thanks for stopping by!
-bandsaw: "The bandsaw is a Jet JWBS-14SFX, 14-inch bandsaw. It has 13.5" resaw, and a 13" throat capacity. It takes a 116.25" blade - https://amzn.to/2YiOJwQ"
+cookbook: 
+  "One of Aaron's favorite cookbooks is One Pan Wonders, by Cooks Country. \nYou can get it here: https://amzn.to/2NNJ14K"
+creedo: 
+  "'No project is complete until you bleed on it.'' - Aaron's Family Creedo, 1791"
+rolecall: 
+  LED Bot responding...
+iamaaron: 
+  "Welcome to the channel. I'm Aaron of Making A Maker. Here you'll find engineering, programming, and woodworking. Thanks for stopping by!"
+bandsaw: 
+  'The bandsaw is a Jet JWBS-14SFX, 14-inch bandsaw. It has 13.5" resaw, and a 13" throat capacity. It takes a 116.25" blade - https://amzn.to/2YiOJwQ'
 
-
+keyboard: "Aaron is using a Corsair K70 RGB Keyboard. You can get it here: https://amzn.to/39UxesR\nMore commands: !mouse, !mousepad, and !headset"
+mouse: "Aaron is using a Corsair M65 ELITE RGB Gaming Mouse. You can get it here: https://amzn.to/37S7Hzk\nMore commands !mousepad, !headset, and !keyboard"
+mousepad: "Aaron is using a Corsair MM800 Polaris RGB LED Lighting Hard Mouse Pad. You can get it here: https://amzn.to/38RkPGd\nMore commands: !keyboard, !mouse, !headset"
+headset: "Aaron is using a Corsair VOID PRO RGB Wireless Gaming Headset with Dolby 7.1 :D You can get it here: https://amzn.to/2w1gVf9\nMore commands: !keyboard, !mouse, !mousepad"
