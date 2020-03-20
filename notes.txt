@@ -1,3 +1,13 @@
+TODO LIST:
+√ Text responses
+√ Command Queue for leds
+commands that start the line (!red and other words)
+status indicators - connected to IRC, ready - flash or indicate states
+
+bust it all apart (refactor into separate things)
+
+
+
 
 1) RENAME AND REORGANIZE THIS BULLSHIT
 
@@ -110,8 +120,6 @@ hex color handling
 pantone color handling
 
 
-Text responses
-Command Queue for leds
-bust it all apart
+
 
 
