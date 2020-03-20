@@ -8,6 +8,14 @@ log = logging.getLogger()
 DEFAULT_CONFIG = "config.yaml"
 PRIVATE_CONFIG = "private_config.yaml"
 
+
+class pixel_order:
+    def __init__(self, name="RGB", order=(0, 1, 2)):
+        self.name = name
+        self.order = order
+        self.bytes = len(order)
+
+
 def get_config():
     config = {}
     # Read in configuration values
